@@ -27,10 +27,10 @@
     <form action="" method="POST" class="login-form">
         {% csrf_token %}
         <div class="form-group">
-            <input type="text" class="form-control rounded-left" placeholder="Your Email" required>
+            <input type="text" name="email" class="form-control rounded-left" placeholder="Your Email" required>
         </div>
         <div class="form-group d-flex">
-            <input type="password" class="form-control rounded-left" placeholder="Type your Password" required>
+            <input type="password" name="password" class="form-control rounded-left" placeholder="Type your Password" required>
         </div>
         <div class="form-group">
             <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>

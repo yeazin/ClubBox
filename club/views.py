@@ -14,7 +14,36 @@ from .models import User, Gender, Admin, Member
 # Home View 
 class HomeView(View):
     def get(self,request,*args,**kwargs):
+
         return render(request,'index.html')
+    def post(self,request,*args,**kwargs):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        admin_check = User.objects.filter(email=email)
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            login(request,user)
+            is_admin = User.objects.get(email = user)
+            if is_admin.is_admin :
+                return redirect('admin')
+            else:
+                return redirect('member')
+        else:
+            if not admin_check:
+                messages.warning(request,'Sorry Your Email Didnot Match')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+            else:
+                messages.warning(request,'Sorry Your Password Didnot Match')
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+# Logout view
+class LogoutView(View):    
+    @method_decorator(login_required(login_url='home'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,request):
+        logout(request)
+        return redirect('home')
 
 # Dashboard 
 class Dashboard(View):
@@ -57,3 +86,18 @@ class UserRegister(View):
         messages.success(request,'Thanks For Signing \n Please Log In to Continue')
         return redirect('home')
 
+# Admin Dashboard 
+class AdminDashboard(View):
+
+
+    def get(self,request):
+        return render(request,'dashboard/admin.html')
+
+# Admin Dashboard 
+class MemberDashboard(View):
+    @method_decorator(login_required(login_url='home'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,request):
+        return render(request,'dashboard/member.html')

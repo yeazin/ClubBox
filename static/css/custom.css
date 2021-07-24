@@ -3,6 +3,16 @@
 body{
     background-color: #e0ebff;
 }
+
+nav{
+    background-color: white;
+    box-shadow: 0.5px 1px 4px 1px #d5eae1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
 .login-wrap{
     position: relative;
     background: #fff;
