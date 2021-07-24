@@ -8,5 +8,7 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(),name='logout'),
 
     path('admin/', views.AdminDashboard.as_view(),name='admin'),
+    path('add-member/', views.AddMembers.as_view(),name='add'),
+    path('member/view/<str:id>',views.ViewMember.as_view(),name='single_member'),
     path('member/',views.MemberDashboard.as_view(),name='member'),
 ]

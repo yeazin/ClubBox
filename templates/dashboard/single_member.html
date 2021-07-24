@@ -1,0 +1,114 @@
+{% extends 'base/base.html' %}
+{% block title %}
+{{ member.name }} | ClubBox
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-md-7 col-lg-9">
+            <div class=" p-4 p-md-5 mt-3">
+                <div class="row">
+                    <div class="col">
+                        <table>
+                            <tr>
+                                <td><h3>Name</h3></td>
+                                <td><h3> :</h3> </td>
+                                <td> <h3>{{ member.name }}</h3></td>
+                            </tr>
+                            <tr>
+                                <td><h5>Username </h5></td>
+                                <td><h5>:</h5></td>
+                                <td><h5>{{ member.user.username }}</h5></td>
+                            </tr>
+                            <tr>
+                                <td><h5>Email </h5></td>
+                                <td><h5>:</h5></td>
+                                <td><h5>{{ member.user.email }}</h5></td>
+                            </tr>
+
+                        </table>
+                        
+                    </div>
+                    <div class="col text-center">
+                        <img src="{{ member.image.url }}" style="width: 40%;border-radius: 10%;" alt="">
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col ">
+                        <table >
+                            <tr>
+                                <td><p><strong>Father`s Name </strong></p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.f_name }}</p></td>
+                            </tr>
+                                <td><p><strong>Mother`s Name</strong> </p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.m_name }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>Gender</strong> </p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.gender }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>Date of Birth</strong></p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.dob }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>Nationality</strong></p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.nationality }}</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <table>
+                            <tr>
+                                <td><p><strong>Phone Number</strong></p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.phone_number }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>NID</strong></p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.nid }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>Present Address</strong> </p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.present_address }}</p></td>
+                            </tr>
+                            <tr>
+                                <td><p><strong>Parmanent Address</strong> </p></td>
+                                <td> </td>
+                                <td><p>:</p></td>
+                                <td> </td>
+                                <td><p>{{ member.parmanent_address  }}</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

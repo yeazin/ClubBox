@@ -2,5 +2,36 @@
 {% block title %} Admin | ClubBox {% endblock %}
 {% block body %}
 
-<h1> Hey Admin </h1>
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-md-7 col-lg-11">
+            <div class="login-wrap p-4 p-md-5 mt-5">
+                <h3 class="text-center">All Members</h3>
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        
+                        <th scope="col">Name</th>
+                        <th scope="col">username</th>
+                        <th scope="col">Email</th>
+                        <th> Action </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for m in member %}
+                      <tr>
+                        <td> {{ m.name }}</td>
+                        <td>{{ m.user.username }}</td>
+                        <td>{{ m.user.email }}</td>
+                        <td><a href="{% url 'single_member' m.id %}"><i class="far fa-eye"></i></a> | <i class="far fa-edit"></i> | <i class="fas fa-trash"></i></td>
+                      </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
 {% endblock %}

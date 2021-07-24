@@ -11,7 +11,7 @@
   
             <div class="navbar-nav ml-auto">
                 {% if user.is_admin %}
-                <a class="nav-item nav-link" href="#"><i class="fas fa-file-signature"></i> Add Members </a>
+                <a class="nav-item nav-link" href="{% url 'add' %}"><i class="fas fa-file-signature"></i> Add Members </a>
                 <a class="nav-item nav-link" href="#"><i class="fas fa-file-signature"></i> View Members </a>
                 {% endif %}
             </div>

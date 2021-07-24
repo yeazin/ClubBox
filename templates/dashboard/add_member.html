@@ -1,0 +1,124 @@
+{% extends 'base/base.html' %}
+{% block title %} Add Members | ClubBox {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-md-7 col-lg-10">
+            <div class="login-wrap p-4 p-md-5 mt-2">
+                <form action="{% url 'add' %}" method="POST" class="login-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="email" class="form-control rounded-left" name="email" placeholder="Type Member Email" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="username" placeholder="Type Member Username" required>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control rounded-left" name ="name" placeholder="Type Member Name" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="f_name" placeholder="Type Member Father`s Name" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="m_name" placeholder="Type Member Mother`s Name" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" onfocus="(this.type = 'date')"  class="form-control rounded-left" name="dob" placeholder="Member Birth Date" required />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <select class="form-control "
+                                name="gender"
+                                         required>
+                                    <option> Select Gender </option>
+                                    {% for d in gender %}
+                                    <option >{{ d }}</option>
+                                    {% endfor %}
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="phone" placeholder="Type Member Phone Number" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file rounded-left" name="image" placeholder="Member Photo" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="present" placeholder="Type Member Present Address" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="parmanent" placeholder="Type Member Paramanent Address" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="nation" placeholder="Type Member Nationality" required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="text" class="form-control rounded-left" name="nid" placeholder="Type Member National ID Number" required>
+                            </div>
+                        </div>
+                    </div>
+            
+            
+            
+                    <div class="row">
+                        <div class="col">
+                            <input type="password" class="form-control rounded-left" name="password" placeholder="Type your Password" required>
+                        </div>
+                        <div class="col">
+                            <input type="password" class="form-control rounded-left" name="password2" placeholder="Confirm your Password" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Create Member</button>
+                    </div>
+            
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

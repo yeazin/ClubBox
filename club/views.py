@@ -1,12 +1,12 @@
-from typing import ClassVar
-from django.shortcuts import redirect, render
+
+from django.shortcuts import redirect, render, get_object_or_404
 from django.views import View
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login , logout
 from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 # models import 
 from .models import User, Gender, Admin, Member
@@ -89,9 +89,75 @@ class UserRegister(View):
 # Admin Dashboard 
 class AdminDashboard(View):
     def get(self,request):
-        return render(request,'dashboard/admin.html')
+        context ={
+            'member':Member.objects.all().order_by('-created_at')
+        }
+        return render(request,'dashboard/admin.html',context)
 
-# update member information 
+# add member 
+class AddMembers(View):
+    @method_decorator(login_required(login_url='home'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,request):
+        context = {
+            'gender':Gender.objects.all()
+        }
+        return render(request,'dashboard/add_member.html',context)
+    def post(self,request):
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        image = request.FILES.get('image')
+        name = request.POST.get('name')
+        f_name = request.POST.get('f_name')
+        m_name = request.POST.get('m_name')
+        gender_obj = request.POST.get('gender')
+        gender = Gender.objects.get(name=gender_obj)
+        dob = request.POST.get('dob')
+        phone = request.POST.get('phone')
+        nationality = request.POST.get('nation')
+        present = request.POST.get('present')
+        parmanent = request.POST.get('parmanent')
+        nid = request.POST.get('nid')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        email_check = User.objects.filter(email=email)
+        username_check = User.objects.filter(username = username )
+        if email_check:
+            messages.warning(request,'Email Already Exits !!')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+        elif username_check :
+            messages.warning(request,'Username Already Exits !!')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+        elif password != password2:
+            messages.warning(request,'Password DIDn`t Match')
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+        else:
+            auth_info={
+                'username':username,
+                'email':email,
+                'password':make_password(password)
+            }
+            user = User(**auth_info)
+            user.save()
+        member_obj = Member(user=user,name=name, image=image,\
+                    f_name = f_name , m_name = m_name , dob=dob , phone_number = phone, \
+                        nationality= nationality, present_address = present, parmanent_address = parmanent,\
+                            nid=nid, gender=gender)
+        member_obj.save()
+        messages.success(request,'Member has been Created')
+        return redirect('admin')
+
+# view member
+class ViewMember(View):
+    def get(self,request,id,*args,**kwargs):
+        context={
+            'member':get_object_or_404(Member,id=id)
+        }
+        return render(request,'dashboard/single_member.html', context )
+
 
 # Admin Dashboard 
 class MemberDashboard(View):
@@ -100,5 +166,6 @@ class MemberDashboard(View):
         return super().dispatch(request,*args,**kwargs)
 
     def get(self,request):
+
         return render(request,'dashboard/member.html')
     
