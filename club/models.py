@@ -40,8 +40,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(_('email_address'), unique=True)
 
-    password = models.CharField(max_length=50)
-    confirm_password = models.CharField(max_length=50)
+    password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

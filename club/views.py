@@ -88,10 +88,10 @@ class UserRegister(View):
 
 # Admin Dashboard 
 class AdminDashboard(View):
-
-
     def get(self,request):
         return render(request,'dashboard/admin.html')
+
+# update member information 
 
 # Admin Dashboard 
 class MemberDashboard(View):
@@ -101,3 +101,4 @@ class MemberDashboard(View):
 
     def get(self,request):
         return render(request,'dashboard/member.html')
+    
