@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <title>Register | ClubBox </title>
+</head>
+<body>
+
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-md-6 text-center mb-5 mt-5">
+    <h2 class="heading-section">Welcome To ClubBox</h2>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-7">
+    <div class="login-wrap p-4 p-md-5">
+    <div class="icon d-flex align-items-center justify-content-center">
+    <span class="fa fa-user-o"></span>
+    </div>
+    <h3 class="text-center mb-4">Sign Up</h3>
+    <form action="{% url 'register' %}" method="POST" class="login-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input type="email" class="form-control rounded-left" name ="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control rounded-left" name ="username" placeholder="Type Your Username" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control rounded-left" name ="name" placeholder="Type Your Name" required>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="col">
+                <input type="password" class="form-control rounded-left" name="password" placeholder="Type your Password" required>
+            </div>
+            <div class="col">
+                <input type="password" class="form-control rounded-left" name="password2" placeholder="Confirm your Password" required>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign Up</button>
+        </div>
+
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+
+    
+</body>
+</html>
