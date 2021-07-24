@@ -4,111 +4,139 @@
 {% endblock %}
 {% block body %}
 <div class="container">
+    <div id="main">
     <div class="row justify-content-center" >
-        <div class="col-md-7 col-lg-9">
-            <div class=" p-4 p-md-5 mt-3">
-                <div class="row">
-                    <div class="col">
-                        <table>
-                            <tr>
-                                <td><h3>Name</h3></td>
-                                <td><h3> :</h3> </td>
-                                <td> <h3>{{ member.name }}</h3></td>
-                            </tr>
-                            <tr>
-                                <td><h5>Username </h5></td>
-                                <td><h5>:</h5></td>
-                                <td><h5>{{ member.user.username }}</h5></td>
-                            </tr>
-                            <tr>
-                                <td><h5>Email </h5></td>
-                                <td><h5>:</h5></td>
-                                <td><h5>{{ member.user.email }}</h5></td>
-                            </tr>
+        
+            <div class="col-md-7 col-lg-11">
+                <div class="p-4 p-md-5 mt-3">
+                    <div class="row">
+                        <div class="col-7">
+                            <table>
+                                <tr>
+                                    <td><h4>Name</h4></td>
+                                    <td><h4> : &nbsp;</h4> </td>
+                                    <td> <h4>{{ member.name }}</h4></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Username </h5></td>
+                                    <td><h5>:</h5></td>
+                                    <td><h5>{{ member.user.username }}</h5></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Email </h5></td>
+                                    <td><h5>:</h5></td>
+                                    <td><h5>{{ member.user.email }}</h5></td>
+                                </tr>
 
-                        </table>
-                        
+                            </table>
+                            
+                        </div>
+                        <div class="col-5 ">
+                            <img src="{{ member.image.url }}" style="width: 40%;border-radius: 10%;" alt="">
+                        </div>
                     </div>
-                    <div class="col text-center">
-                        <img src="{{ member.image.url }}" style="width: 40%;border-radius: 10%;" alt="">
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col ">
-                        <table >
-                            <tr>
-                                <td><p><strong>Father`s Name </strong></p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.f_name }}</p></td>
-                            </tr>
-                                <td><p><strong>Mother`s Name</strong> </p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.m_name }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>Gender</strong> </p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.gender }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>Date of Birth</strong></p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.dob }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>Nationality</strong></p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.nationality }}</p></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="col">
-                        <table>
-                            <tr>
-                                <td><p><strong>Phone Number</strong></p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.phone_number }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>NID</strong></p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.nid }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>Present Address</strong> </p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.present_address }}</p></td>
-                            </tr>
-                            <tr>
-                                <td><p><strong>Parmanent Address</strong> </p></td>
-                                <td> </td>
-                                <td><p>:</p></td>
-                                <td> </td>
-                                <td><p>{{ member.parmanent_address  }}</p></td>
-                            </tr>
-                        </table>
+                    <hr>
+                    <div class="row">
+                        <div class="col ">
+                            <table >
+                                <tr>
+                                    <td><p><strong>Father`s Name </strong></p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.f_name }}</p></td>
+                                </tr>
+                                    <td><p><strong>Mother`s Name</strong> </p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.m_name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Gender</strong> </p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.gender }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Date of Birth</strong></p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.dob }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Nationality</strong></p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.nationality }}</p></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col">
+                            <table>
+                                <tr>
+                                    <td><p><strong>Phone Number</strong></p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.phone_number }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>NID</strong></p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.nid }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Present Address</strong> </p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.present_address }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><p><strong>Parmanent Address</strong> </p></td>
+                                    <td> </td>
+                                    <td><p>:</p></td>
+                                    <td> </td>
+                                    <td><p>{{ member.parmanent_address  }}</p></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
+<div class=" text-center">
+    <button class="btn btn-primary btn-md clearfix hidden-print" id="download"> Download PDF</button>
+    
+</div>
+
+
+<script>
+    window.onload = function () {
+           document.getElementById("download")
+               .addEventListener("click", () => {
+                   const invoice = this.document.getElementById("main");
+                   console.log(invoice);
+                   console.log(window);
+                   var opt = {
+                       margin:0.1,
+                       filename: '{{ obj.id }}.pdf',
+                       image: { type: 'jpeg', quality: 0.98 },
+                       html2canvas: { scale: 4 },
+                       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                   };
+                   html2pdf().from(invoice).set(opt).save();
+               });
+           };
+   </script>
 {% endblock %}
