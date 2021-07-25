@@ -2,5 +2,23 @@
 {% block title %} Admin | ClubBox {% endblock %}
 {% block body %}
 
-<h1> Hey Member</h1>
+<div class="container">
+    <div class="row justify-content-center" >
+        <div class="col-md-7 col-lg-11">
+            <div class="login-wrap p-4 p-md-5 mt-5">
+                <h3 class="text-center">Download Your Information</h3>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td>{{ user.member.name }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td><a href="{% url 'view' %}"><i class="far fa-eye"></i></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
 {% endblock %}

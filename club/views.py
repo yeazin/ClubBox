@@ -27,6 +27,7 @@ class HomeView(View):
             if is_admin.is_admin :
                 return redirect('admin')
             else:
+                messages.success(request,'Welcome '+ user.member.name +'.')
                 return redirect('member')
         else:
             if not admin_check:
@@ -151,7 +152,7 @@ class AddMembers(View):
         return redirect('admin')
 
 # view member
-class ViewMember(View):
+class SingleMember(View):
     def get(self,request,id,*args,**kwargs):
         context={
             'member':get_object_or_404(Member,id=id)
@@ -168,4 +169,16 @@ class MemberDashboard(View):
     def get(self,request):
 
         return render(request,'dashboard/member.html')
-    
+
+class ViewMember(View):
+    @method_decorator(login_required(login_url='home'))
+    def dispatch(self,request,*args,**kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+
+    def get(self,request):
+        user = request.user
+        context ={
+            'member':user.member
+        }   
+        return render(request,'dashboard/view_member.html',context)

@@ -1,9 +1,14 @@
 <nav class="navbar navbar-expand-md navbar-light " >
     <div class="container" >
-        <a class="navbar-brand" href=" ">
-             
+        {% if user.is_admin %}
+        <a class="navbar-brand" href="{% url 'admin' %}">
             <span>ClubBox</span>
         </a>
+        {% else %}
+        <a class="navbar-brand" href="{% url 'member' %}">
+            <span>ClubBox</span>
+        </a>
+        {% endif %}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -12,7 +17,7 @@
             <div class="navbar-nav ml-auto">
                 {% if user.is_admin %}
                 <a class="nav-item nav-link" href="{% url 'add' %}"><i class="fas fa-file-signature"></i> Add Members </a>
-                <a class="nav-item nav-link" href="#"><i class="fas fa-file-signature"></i> View Members </a>
+                <a class="nav-item nav-link" href="{% url 'admin' %}"><i class="fas fa-file-signature"></i> View Members </a>
                 {% endif %}
             </div>
 
